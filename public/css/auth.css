@@ -1,0 +1,115 @@
+/* Page login.php */
+
+#page-login {
+    padding: 0 20px;
+}
+
+.login-container {
+    max-width: 100%;
+    margin: 20px 0;
+}
+
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    padding: 12px 25px;
+    background-color: #C6B3FF;
+    border: 2px solid #208BEF;
+    border-radius: 10px;
+    /* Coins plus arrondis */
+    color: #0F4980;
+    font-family: "Itim Regular", sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* Transition fluide pour les changements */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Ombre légère */
+    text-transform: uppercase;
+    /* Texte en majuscules pour un look plus stylé */
+}
+
+.tab-button.active {
+    background-color: #208BEF;
+    color: white;
+    border-color: #0F4980;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Ombre plus prononcée quand actif */
+}
+
+.tab-button:hover {
+    background-color: #A68BFF;
+    /* Variante plus claire du violet au survol */
+    transform: translateY(-2px);
+    /* Légère élévation au survol */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Ombre augmentée au survol */
+}
+
+.tab-content {
+    display: none;
+}
+
+.section-container {
+    border: 2px solid #208BEF;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section-container label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.section-container input[type="text"],
+.section-container input[type="email"],
+.section-container input[type="password"],
+.section-container textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    margin-top: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
+}
+
+.section-container textarea {
+    min-height: 100px;
+}
+
+#publier-button {
+    padding: 12px;
+    background-color: #C6B3FF;
+    color: #FFFFFF;
+    font-size: 1.25rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 2px solid #208BEF;
+    display: block;
+    width: 80%;
+    margin: 20px auto 0;
+}
+
+.error-message {
+    color: #ff3333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.success-message {
+    color: #28a745;
+    text-align: center;
+    margin-bottom: 15px;
+}

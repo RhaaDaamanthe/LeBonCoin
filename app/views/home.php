@@ -97,23 +97,23 @@
 
 <footer>
         <div class="footer-icons">
-            <a href="/LeBonCoin/categories/immobilier">
+            <a href="/">
                 <img src="/LeBonCoin/public/images/icones/search.svg" alt="Recherche">
                 <span>Recherche</span>
             </a>
-            <a href="/LeBonCoin/categories/vehicules">
+            <a href="/">
                 <img src="/LeBonCoin/public/images/icones/favorite.svg" alt="Favoris">
                 <span>Favoris</span>
             </a>
-            <a href="/LeBonCoin/categories/electronique">
+            <a href="/LeBonCoin/vendre">
                 <img src="/LeBonCoin/public/images/icones/add.svg" alt="Ajouter">
                 <span>Ajouter</span>
             </a>
-            <a href="/LeBonCoin/categories/loisirs">
+            <a href="/">
                 <img src="/LeBonCoin/public/images/icones/message.svg" alt="Messages">
                 <span>Messages</span>
             </a>
-            <a href="/LeBonCoin/categories/autre">
+            <a href="/LeBonCoin/auth">
                 <img src="/LeBonCoin/public/images/icones/account.svg" alt="Profil">
                 <span>Profil</span>
             </a>

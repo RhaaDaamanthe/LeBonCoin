@@ -6,15 +6,33 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit010f77737c4551ff273da46355d00b70
 {
+    public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Stagiaire\\LeBonCoin\\' => 20,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Stagiaire\\LeBonCoin\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
+        ),
+    );
+
     public static $classMap = array (
         'AltoRouter' => __DIR__ . '/..' . '/altorouter/altorouter/AltoRouter.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'HomeController' => __DIR__ . '/../..' . '/app/controller/HomeController.php',
+        'Stagiaire\\LeBonCoin\\controller\\AuthController' => __DIR__ . '/../..' . '/app/controller/AuthController.php',
+        'Stagiaire\\LeBonCoin\\controller\\HomeController' => __DIR__ . '/../..' . '/app/controller/HomeController.php',
+        'Stagiaire\\LeBonCoin\\controller\\VendreController' => __DIR__ . '/../..' . '/app/controller/VendreController.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit010f77737c4551ff273da46355d00b70::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit010f77737c4551ff273da46355d00b70::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInit010f77737c4551ff273da46355d00b70::$classMap;
 
         }, null, ClassLoader::class);

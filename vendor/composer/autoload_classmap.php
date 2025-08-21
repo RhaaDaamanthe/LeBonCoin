@@ -8,5 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'AltoRouter' => $vendorDir . '/altorouter/altorouter/AltoRouter.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'HomeController' => $baseDir . '/app/controller/HomeController.php',
+    'Stagiaire\\LeBonCoin\\controller\\AuthController' => $baseDir . '/app/controller/AuthController.php',
+    'Stagiaire\\LeBonCoin\\controller\\HomeController' => $baseDir . '/app/controller/HomeController.php',
+    'Stagiaire\\LeBonCoin\\controller\\VendreController' => $baseDir . '/app/controller/VendreController.php',
 );

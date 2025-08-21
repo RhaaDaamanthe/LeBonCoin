@@ -1,6 +1,10 @@
 <?php
+// app/controller/HomeController.php
+namespace Stagiaire\LeBonCoin\controller;
+
 class HomeController {
     public function index() {
-        require_once __DIR__ . '/../view/home.php'; 
+        // Le chemin de la vue doit être correct
+        require_once __DIR__ . '/../views/home.php';
     }
 }
