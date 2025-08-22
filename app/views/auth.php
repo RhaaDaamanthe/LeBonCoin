@@ -9,7 +9,7 @@
 <body>
     <header>
         <div class="header-vendre flex">
-            <a href="/"><img src="/LeBonCoin/public/images/icones/close.svg" alt="Retour"></a>
+            <a href="/LeBonCoin/"><img src="/LeBonCoin/public/images/icones/close.svg" alt="Retour"></a>
             <h1>LeBonTruc</h1>
         </div>
     </header>
@@ -17,18 +17,28 @@
     <main id="page-login">
         <div class="login-container">
             <?php
+            // Affiche les messages d'erreur ou de succès
             $error = isset($error) ? $error : '';
             $success = isset($success) ? $success : '';
-            if ($error) echo "<p class='error-message'>$error</p>";
-            if ($success) echo "<p class='success-message'>$success</p>";
-            ?>
+            if ($error) echo "<p class='error-message'>" . htmlspecialchars($error) . "</p>";
+            if ($success) echo "<p class='success-message'>" . htmlspecialchars($success) . "</p>";
 
+            // Logique de l'affichage : si connecté ou non
+            if (isset($_SESSION['user'])) {
+                // Afficher le message de bienvenue et le bouton de déconnexion
+                echo "<div class='auth-options'>";
+                echo "<h3>Bonjour " . htmlspecialchars($_SESSION['user']['username']) . "</h3>";
+                echo "<p>Vous êtes déjà connecté.</p>";
+                echo "<a href='/LeBonCoin/logout'><button class='tab-button'>Déconnexion</button></a>";
+                echo "</div>";
+            } else {
+            ?>
             <div class="tab-buttons">
                 <button class="tab-button active" onclick="showTab('login')">Connexion</button>
                 <button class="tab-button" onclick="showTab('register')">Inscription</button>
             </div>
 
-            <form action="/auth" method="POST" class="tab-content" id="login-tab">
+            <form action="/LeBonCoin/auth" method="POST" class="tab-content" id="login-tab">
                 <div class="section-container">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="Votre email" required>
@@ -40,7 +50,7 @@
                 <button type="submit" id="publier-button">Se connecter</button>
             </form>
 
-            <form action="/register" method="POST" class="tab-content" id="register-tab" style="display: none;">
+            <form action="/LeBonCoin/register" method="POST" class="tab-content" id="register-tab" style="display: none;">
                 <div class="section-container">
                     <label for="reg-email">Email</label>
                     <input type="email" id="reg-email" name="email" placeholder="Votre email" required>
@@ -55,11 +65,11 @@
                 </div>
                 <button type="submit" id="publier-button">S'inscrire</button>
             </form>
+            <?php } ?>
         </div>
     </main>
 
     <footer>
-
     </footer>
 
     <script>

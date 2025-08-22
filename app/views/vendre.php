@@ -9,7 +9,9 @@
 <body>
     <header>
         <div class="header-vendre flex">
-            <img src="/LeBonCoin/public/images/icones/close.svg" alt="Retour">
+            <a href="/LeBonCoin/">
+                <img src="/LeBonCoin/public/images/icones/close.svg" alt="Retour">
+            </a>
             <h1>Vends un article</h1>
         </div>
     </header>

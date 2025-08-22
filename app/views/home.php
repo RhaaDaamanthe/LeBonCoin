@@ -7,6 +7,20 @@
     <title>Accueil - LeBonTruc</title>
 </head>
 <body>
+        <?php
+    // La session est déjà démarrée dans index.php, donc on ne le fait pas ici.
+
+    // Affiche le message de bienvenue si l'utilisateur est connecté
+    if (isset($_SESSION['user']['username'])) {
+        echo "<div class='notification welcome-message'>Bienvenue, " . htmlspecialchars($_SESSION['user']['username']) . " !</div>";
+    }
+
+    // Affiche le message de succès si la redirection a eu lieu
+    if (isset($_SESSION['success_message'])) {
+        echo "<div class='notification success-message'>" . htmlspecialchars($_SESSION['success_message']) . "</div>";
+        unset($_SESSION['success_message']); // Supprime le message de la session
+    }
+    ?>
     <header>
         <div class="header flex">
             <img src="/LeBonCoin/public/images/icones/burger.svg" alt="Menu burger">

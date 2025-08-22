@@ -26,6 +26,8 @@ class ComposerStaticInit010f77737c4551ff273da46355d00b70
         'Stagiaire\\LeBonCoin\\controller\\AuthController' => __DIR__ . '/../..' . '/app/controller/AuthController.php',
         'Stagiaire\\LeBonCoin\\controller\\HomeController' => __DIR__ . '/../..' . '/app/controller/HomeController.php',
         'Stagiaire\\LeBonCoin\\controller\\VendreController' => __DIR__ . '/../..' . '/app/controller/VendreController.php',
+        'Stagiaire\\LeBonCoin\\database\\Connection' => __DIR__ . '/../..' . '/app/database/Connection.php',
+        'Stagiaire\\LeBonCoin\\models\\User' => __DIR__ . '/../..' . '/app/models/User.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
