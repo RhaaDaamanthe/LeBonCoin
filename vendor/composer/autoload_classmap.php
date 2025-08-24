@@ -12,5 +12,6 @@ return array(
     'Stagiaire\\LeBonCoin\\controller\\HomeController' => $baseDir . '/app/controller/HomeController.php',
     'Stagiaire\\LeBonCoin\\controller\\VendreController' => $baseDir . '/app/controller/VendreController.php',
     'Stagiaire\\LeBonCoin\\database\\Connection' => $baseDir . '/app/database/Connection.php',
+    'Stagiaire\\LeBonCoin\\models\\Annonce' => $baseDir . '/app/models/Annonce.php',
     'Stagiaire\\LeBonCoin\\models\\User' => $baseDir . '/app/models/User.php',
 );

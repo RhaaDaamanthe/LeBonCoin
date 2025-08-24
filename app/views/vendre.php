@@ -32,29 +32,117 @@
                 <textarea id="description" name="description" placeholder="Plus de détails sur l'article..." required></textarea>
             </div>
 
-
-
-
-            <div class="cateprix-container">
-                <a href="/vendre/categorie" class="section-link flex">
+            <div class="cateprix-container" id="openCategoryModal">
+                <div class="section-link flex">
                     <label>Catégorie</label>
+                    <span id="categoryLabel" class="selected-value">Choisir une catégorie</span>
                     <img src="/LeBonCoin/public/images/icones/arrow.svg" alt="Flèche">
-                </a>
+                </div>
             </div>
+            <input type="hidden" id="categoryInput" name="category_id" required>
 
-            <div class="cateprix-container">
-                <a href="/vendre/prix" class="section-link flex">
+            <div class="cateprix-container" id="openPriceModal">
+                <div class="section-link flex">
                     <label>Prix</label>
+                    <span id="priceLabel" class="selected-value">Choisir un prix</span>
                     <img src="/LeBonCoin/public/images/icones/arrow.svg" alt="Flèche">
-                </a>
+                </div>
             </div>
+            <input type="hidden" id="priceInput" name="price" required>
+
 
             <button type="submit" id="publier-button">Publier</button>
         </form>
     </main>
 
-    <footer>
+    <div id="categoryModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header flex">
+                <h2>Catégories</h2>
+                <span class="close-button" id="closeCategoryModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="category-option" data-id="1">Immobilier</div>
+                <div class="category-option" data-id="2">Véhicules</div>
+                <div class="category-option" data-id="3">Électronique</div>
+                <div class="category-option" data-id="4">Loisirs</div>
+                <div class="category-option" data-id="5">Animaux</div>
+                <div class="category-option" data-id="6">Vêtements</div>
+            </div>
+        </div>
+    </div>
 
-    </footer>
+    <div id="priceModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header flex">
+                <h2>Prix</h2>
+                <span class="close-button" id="closePriceModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="price-input-container">
+                    <input type="number" id="price-input-modal" placeholder="Prix" required>
+                </div>
+                <button id="validatePriceButton">Valider</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Gestion des modales
+        document.getElementById('openCategoryModal').addEventListener('click', function() {
+            document.getElementById('categoryModal').style.display = 'flex';
+        });
+
+        document.getElementById('closeCategoryModal').addEventListener('click', function() {
+            document.getElementById('categoryModal').style.display = 'none';
+        });
+        
+        document.getElementById('openPriceModal').addEventListener('click', function() {
+            document.getElementById('priceModal').style.display = 'flex';
+        });
+
+        document.getElementById('closePriceModal').addEventListener('click', function() {
+            document.getElementById('priceModal').style.display = 'none';
+        });
+
+        // Fermer la modale en cliquant en dehors
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // Événements pour la modale de catégorie
+        document.querySelectorAll('.category-option').forEach(item => {
+            item.addEventListener('click', event => {
+                const categoryId = event.target.getAttribute('data-id');
+                const categoryName = event.target.textContent;
+                
+                // Mettre à jour le champ caché du formulaire
+                document.getElementById('categoryInput').value = categoryId;
+                
+                // Mettre à jour le label visible pour l'utilisateur
+                document.getElementById('categoryLabel').textContent = categoryName;
+
+                // Fermer la modale
+                document.getElementById('categoryModal').style.display = 'none';
+            });
+        });
+
+        // Événements pour la modale de prix
+        document.getElementById('validatePriceButton').addEventListener('click', function() {
+            const price = document.getElementById('price-input-modal').value;
+            if (price) {
+                // Mettre à jour le champ caché du formulaire
+                document.getElementById('priceInput').value = price;
+                
+                // Mettre à jour le label visible
+                document.getElementById('priceLabel').textContent = price + ' €';
+
+                // Fermer la modale
+                document.getElementById('priceModal').style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>

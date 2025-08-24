@@ -27,6 +27,7 @@ class ComposerStaticInit010f77737c4551ff273da46355d00b70
         'Stagiaire\\LeBonCoin\\controller\\HomeController' => __DIR__ . '/../..' . '/app/controller/HomeController.php',
         'Stagiaire\\LeBonCoin\\controller\\VendreController' => __DIR__ . '/../..' . '/app/controller/VendreController.php',
         'Stagiaire\\LeBonCoin\\database\\Connection' => __DIR__ . '/../..' . '/app/database/Connection.php',
+        'Stagiaire\\LeBonCoin\\models\\Annonce' => __DIR__ . '/../..' . '/app/models/Annonce.php',
         'Stagiaire\\LeBonCoin\\models\\User' => __DIR__ . '/../..' . '/app/models/User.php',
     );
 
