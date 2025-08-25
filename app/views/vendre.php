@@ -1,3 +1,8 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -17,11 +22,22 @@
     </header>
 
     <main id="page-vendre">
-        <form action="/vendre" method="POST" enctype="multipart/form-data">
-            <div class="ajouter_photos">
-                <label for="image" class="upload-button">Ajouter une photo</label>
-                <input type="file" id="image" name="image" accept="image/*" required>
-            </div>
+        <form action="/LeBonCoin/vendre" method="POST" enctype="multipart/form-data">
+<div class="ajouter_photos">
+    <label for="images" class="upload-button">Ajouter une photo</label>
+    <input type="file" id="images" name="images[]" accept="image/*" multiple style="display: none;">
+    <div id="image-preview-container"></div>
+</div>
+                    <?php
+        if (isset($_SESSION['error_message'])) {
+            echo "<p class='message error-message'>" . htmlspecialchars($_SESSION['error_message']) . "</p>";
+            unset($_SESSION['error_message']);
+        }
+        if (isset($_SESSION['success_message'])) {
+            echo "<p class='message success-message'>" . htmlspecialchars($_SESSION['success_message']) . "</p>";
+            unset($_SESSION['success_message']);
+        }
+        ?>
             <div class="section-container">
                 <label for="title">Titre de l'annonce</label>
                 <input type="text" id="title" name="title" placeholder="Quel est votre article ?" required>
@@ -49,7 +65,6 @@
                 </div>
             </div>
             <input type="hidden" id="priceInput" name="price" required>
-
 
             <button type="submit" id="publier-button">Publier</button>
         </form>
@@ -88,61 +103,68 @@
     </div>
 
     <script>
-        // Gestion des modales
         document.getElementById('openCategoryModal').addEventListener('click', function() {
             document.getElementById('categoryModal').style.display = 'flex';
         });
-
         document.getElementById('closeCategoryModal').addEventListener('click', function() {
             document.getElementById('categoryModal').style.display = 'none';
         });
-        
         document.getElementById('openPriceModal').addEventListener('click', function() {
             document.getElementById('priceModal').style.display = 'flex';
         });
-
         document.getElementById('closePriceModal').addEventListener('click', function() {
             document.getElementById('priceModal').style.display = 'none';
         });
-
-        // Fermer la modale en cliquant en dehors
         window.onclick = function(event) {
             if (event.target.classList.contains('modal-overlay')) {
                 event.target.style.display = 'none';
             }
         }
-
-        // Événements pour la modale de catégorie
         document.querySelectorAll('.category-option').forEach(item => {
             item.addEventListener('click', event => {
                 const categoryId = event.target.getAttribute('data-id');
                 const categoryName = event.target.textContent;
-                
-                // Mettre à jour le champ caché du formulaire
                 document.getElementById('categoryInput').value = categoryId;
-                
-                // Mettre à jour le label visible pour l'utilisateur
                 document.getElementById('categoryLabel').textContent = categoryName;
-
-                // Fermer la modale
                 document.getElementById('categoryModal').style.display = 'none';
             });
         });
-
-        // Événements pour la modale de prix
         document.getElementById('validatePriceButton').addEventListener('click', function() {
             const price = document.getElementById('price-input-modal').value;
             if (price) {
-                // Mettre à jour le champ caché du formulaire
                 document.getElementById('priceInput').value = price;
-                
-                // Mettre à jour le label visible
                 document.getElementById('priceLabel').textContent = price + ' €';
-
-                // Fermer la modale
                 document.getElementById('priceModal').style.display = 'none';
             }
         });
+
+
+        document.getElementById('images').addEventListener('change', function(event) {
+    const previewContainer = document.getElementById('image-preview-container');
+    const uploadButton = document.querySelector('.upload-button');
+
+    // On efface la prévisualisation précédente
+    previewContainer.innerHTML = '';
+    
+    // Si des images ont été sélectionnées
+    if (this.files.length > 0) {
+        uploadButton.style.display = 'none'; // Cacher le bouton
+        
+        // Créer et afficher la prévisualisation pour chaque image
+        for (const file of event.target.files) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.classList.add('image-preview-thumb');
+                previewContainer.appendChild(img);
+            }
+            reader.readAsDataURL(file);
+        }
+    } else {
+        uploadButton.style.display = 'block'; // Réafficher le bouton si la sélection est annulée
+    }
+});
     </script>
 </body>
 </html>
